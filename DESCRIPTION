@@ -1,0 +1,35 @@
+Package: aidR
+Title: Load, 
+Version: 0.0.0.9000
+Authors@R: c(
+   person("Marcel", "Schliebs", ,role = c("aut","cre"), email = "m.schliebs@zeppelin-university.net"), 
+   person("Luca", "Messerschmidt", role = "aut")
+   )
+Description:
+  The aidR package does this and that.
+Depends:
+  R (>= 3.4.1),
+  ggplot2,
+License: MIT
+Encoding: UTF-8
+URL: https://www.schliebs.github.io/aidR
+BugReports: https://www.github.com/schliebs/aidR
+LazyData: true
+Imports:
+  plyr,
+  tidyverse,
+  hrbrthemes,
+  leaflet,
+  lubridate,
+  magrittr,
+  rgdal,
+  sp,
+  stringr
+RoxygenNote: 6.0.1
+Collate: 
+    'importFrom.R'
+    'test_demonstration.R'
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+SystemRequirements: GNU make
