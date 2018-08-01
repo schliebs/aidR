@@ -24,6 +24,7 @@ RoxygenNote: 6.0.1
 Collate: 
     'importFrom.R'
     'test_demonstration.R'
+    'AidData.R'
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
