@@ -16,15 +16,10 @@ URL: https://www.schliebs.github.io/aidR
 BugReports: https://www.github.com/schliebs/aidR
 LazyData: true
 Imports:
-  plyr,
   tidyverse,
   hrbrthemes,
-  leaflet,
   lubridate,
   magrittr,
-  rgdal,
-  sp,
-  stringr
 RoxygenNote: 6.0.1
 Collate: 
     'importFrom.R'
