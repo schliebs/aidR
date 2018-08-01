@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download Raw Dataset — downloadRawAidData • aidR</title>
+<title>Unzip and process Data — prepAidData • aidR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Download Raw Dataset — downloadRawAidData" />
+<meta property="og:title" content="Unzip and process Data — prepAidData" />
 
 <meta property="og:description" content="Description" />
 <meta name="twitter:card" content="summary" />
@@ -115,9 +115,9 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download Raw Dataset</h1>
+    <h1>Unzip and process Data</h1>
     
-    <div class="hidden name"><code>downloadRawAidData.Rd</code></div>
+    <div class="hidden name"><code>prepAidData.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -126,28 +126,24 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>downloadRawAidData</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='st'>"AidDataChina.zip"</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>filepath</th>
+      <td><p>A character string of either a folder or zipfile (including suffix) including the data.</p></td>
+    </tr>
+    <tr>
       <th>dataset</th>
-      <td><p>The Dataset chosen for download. Options currently include "China","AidDataCore".</p></td>
-    </tr>
-    <tr>
-      <th>folder</th>
-      <td><p>A character string containing the name of a subfolder of the current working directory where the dataset shall be saved in.</p></td>
-    </tr>
-    <tr>
-      <th>filename</th>
-      <td><p>A character string for the name of the file (without filetype ending).</p></td>
+      <td><p>The Dataset chosen for download. Options currently include "China .</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character string of the file path and name of the downloaded raw data.</p>
+    <p>A data frame with the output data (further cleaning to be added.)</p>
     
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
@@ -157,9 +153,16 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>downloadRawAidData</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>,
-                   <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>"rawdata"</span>,
-                   <span class='kw'>filename</span> <span class='kw'>=</span> <span class='st'>"MyChinaData"</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span>
+<span class='fu'><a href='downloadRawAidData.html'>downloadRawAidData</a></span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>) <span class='kw'>%&gt;%</span>
+<span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='no'>.</span>,
+           <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)
+<span class='fu'>head</span>(<span class='no'>df</span>)
+
+<span class='no'>df</span> <span class='kw'>&lt;-</span>
+ <span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='st'>"AidDataChina.zip"</span>,
+             <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)
+<span class='fu'>head</span>(<span class='no'>df</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

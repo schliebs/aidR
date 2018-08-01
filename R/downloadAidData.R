@@ -5,6 +5,7 @@
 #' @param dataset The Dataset chosen for download. Options currently include "China","AidDataCore". 
 #' @param folder A character string containing the name of a subfolder of the current working directory where the dataset shall be saved in.
 #' @param filename A character string for the name of the file (without filetype ending). 
+#' @return A character string of the file path and name of the downloaded raw data.
 #' @examples
 #' \dontrun{
 #' downloadRawAidData(dataset = "China",
@@ -52,6 +53,8 @@ downloadRawAidData <- function(dataset = "China",
   
   download.file(df %>% pull(url),
                 destfile = path) 
+  
+  return(path)
   
 }
 

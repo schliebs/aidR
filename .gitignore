@@ -26,6 +26,9 @@ vignettes/*.pdf
 .Rproj.user
 inst/doc
 
+# zip files
+*.zip
+
 # Data
 
 data-offline/

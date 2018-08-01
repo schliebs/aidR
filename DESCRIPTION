@@ -20,11 +20,13 @@ Imports:
   hrbrthemes,
   lubridate,
   magrittr,
+  openxlsx
 RoxygenNote: 6.0.1
 Collate: 
     'importFrom.R'
     'test_demonstration.R'
-    'AidData.R'
+    'downloadAidData.R'
+    'unzipAidData.R'
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
