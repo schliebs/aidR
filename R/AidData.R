@@ -37,7 +37,7 @@ downloadRawAidData <- function(dataset = "China",
   
   df <- 
     linkDF %>% 
-    filter(selector == dataset)
+    dplyr::filter(selector == dataset)
   
   nameOut <- ifelse(is.null(filename),
                     df %>% pull(filenameOut),
