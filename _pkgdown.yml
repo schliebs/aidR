@@ -21,11 +21,11 @@ navbar:
 reference:
 - title: All functions
   desc: ~
-  contents: 
-  - '`testLuca`'
+  contents: '`testLuca`'
 - title: Other
   desc: Other Functions
   contents:
   - '`testLuca`'
   - '`loremipsum`'
+  - '`downloadRawAidData`'
 
