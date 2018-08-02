@@ -4,7 +4,8 @@
 #' @description Description
 #' @param dataset The Dataset chosen for download. Options currently include "China","AidDataCore". 
 #' @param folder A character string containing the name of a subfolder of the current working directory where the dataset shall be saved in.
-#' @param filename A character string for the name of the file (without filetype ending). 
+#' @param filename A character string for the name of the file (without filetype ending).
+#' @param overwrite Logical T/F whether data shall be overwritten if existing already(Defaults to FALSE) 
 #' @return A character string of the file path and name of the downloaded raw data.
 #' @examples
 #' \dontrun{
@@ -17,7 +18,8 @@
 #' @export
 downloadRawAidData <- function(dataset = "China",
                                folder = "",
-                               filename = NULL){
+                               filename = NULL,
+                               overwrite = FALSE){
 
   linkDF <- 
     dplyr::bind_rows(
@@ -43,7 +45,7 @@ downloadRawAidData <- function(dataset = "China",
         url = "http://www.systemicpeace.org/inscr/p4v2017.xls",
         filetype = "xls",
         filenameOut = "polity",
-        citeMessage =     message("Sorry, this data is not currently supported yet")
+        citeMessage = "Sorry, this data is not currently supported yet"
 #"Please cite as follows:\n\n INSERT CITATION HERE"
         )
     )
@@ -65,8 +67,11 @@ downloadRawAidData <- function(dataset = "China",
   
   message(paste0("Writing ",nameOut,".",df$filetype," to '",folder,"'\n"))
   
-  download.file(df %>% pull(url),
-                destfile = path) 
+  
+ if(overwrite == TRUE |(! file.exists(path))){
+   download.file(df %>% pull(url),
+                 destfile = path) 
+ }  else {warning(paste0("File ",path," exists already. Not downloaded again"))}
   
   return(path)
   

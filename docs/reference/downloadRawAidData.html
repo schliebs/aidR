@@ -126,7 +126,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>downloadRawAidData</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>downloadRawAidData</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,6 +143,10 @@
     <tr>
       <th>filename</th>
       <td><p>A character string for the name of the file (without filetype ending).</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Logical T/F whether data shall be overwritten if existing already(Defaults to FALSE)</p></td>
     </tr>
     </table>
     

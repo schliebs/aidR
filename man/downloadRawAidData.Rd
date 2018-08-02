@@ -4,7 +4,8 @@
 \alias{downloadRawAidData}
 \title{Download Raw Dataset}
 \usage{
-downloadRawAidData(dataset = "China", folder = "", filename = NULL)
+downloadRawAidData(dataset = "China", folder = "", filename = NULL,
+  overwrite = FALSE)
 }
 \arguments{
 \item{dataset}{The Dataset chosen for download. Options currently include "China","AidDataCore".}
@@ -12,6 +13,8 @@ downloadRawAidData(dataset = "China", folder = "", filename = NULL)
 \item{folder}{A character string containing the name of a subfolder of the current working directory where the dataset shall be saved in.}
 
 \item{filename}{A character string for the name of the file (without filetype ending).}
+
+\item{overwrite}{Logical T/F whether data shall be overwritten if existing already(Defaults to FALSE)}
 }
 \value{
 A character string of the file path and name of the downloaded raw data.
