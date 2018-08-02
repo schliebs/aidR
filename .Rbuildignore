@@ -6,3 +6,6 @@ offline/
 
 ^/helpers/
 helpers/
+
+^/rawdata/
+rawdata/

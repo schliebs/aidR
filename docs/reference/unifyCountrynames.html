@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unzip and process Data — prepAidData • aidR</title>
+<title>Unify countrynames — unifyCountrynames • aidR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Unzip and process Data — prepAidData" />
+<meta property="og:title" content="Unify countrynames — unifyCountrynames" />
 
 <meta property="og:description" content="Description" />
 <meta name="twitter:card" content="summary" />
@@ -115,9 +115,9 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Unzip and process Data</h1>
+    <h1>Unify countrynames</h1>
     
-    <div class="hidden name"><code>prepAidData.Rd</code></div>
+    <div class="hidden name"><code>unifyCountrynames.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -126,24 +126,20 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='st'>"AidDataChina.zip"</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)</pre>
+    <pre class="usage"><span class='fu'>unifyCountrynames</span>(<span class='no'>inVec</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filepath</th>
-      <td><p>A character string of either a folder or zipfile (including suffix) including the data.</p></td>
-    </tr>
-    <tr>
-      <th>dataset</th>
-      <td><p>The Dataset chosen for download. Options currently include "AidDataCore","China", "worldbank", .</p></td>
+      <th>inVec</th>
+      <td><p>A vector or character string of country name(s)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with the output data (further cleaning to be added.)</p>
+    <p>A character vector containing the unified strings.</p>
     
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
@@ -152,18 +148,15 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span>
-<span class='fu'><a href='downloadRawAidData.html'>downloadRawAidData</a></span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>) <span class='kw'>%&gt;%</span>
-<span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='no'>.</span>,
-           <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)
-<span class='fu'>head</span>(<span class='no'>df</span>)
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Congo Kinshasa"</span>,
+      <span class='st'>"Congo, Republic of"</span>,
+      <span class='st'>"Congo Brazzaville"</span>,
+      <span class='st'>"Cote d`Ivoire"</span>,
+      <span class='st'>"Central African Rep."</span>,
+      <span class='st'>"Cabo Verde"</span>,
+      <span class='st'>"Gambia, The"</span>)
 
-<span class='no'>df</span> <span class='kw'>&lt;-</span>
- <span class='fu'>prepAidData</span>(<span class='kw'>filepath</span> <span class='kw'>=</span> <span class='st'>"AidDataChina.zip"</span>,
-             <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"China"</span>)
-<span class='fu'>head</span>(<span class='no'>df</span>)
-<span class='co'># }</span></pre>
+ <span class='fu'>unifyCountrynames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in set_names(., c("input", "output")): konnte Funktion "set_names" nicht finden</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

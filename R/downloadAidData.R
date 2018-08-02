@@ -31,7 +31,13 @@ downloadRawAidData <- function(dataset = "China",
         url = "https://github.com/AidData-WM/public_datasets/releases/download/v3.1/AidDataCore_ResearchRelease_Level1_v3.1.zip",
         filetype = "zip",
         filenameOut = "AidDataCore",
-        citeMessage = "Please cite as\n Tierney, Michael J., Daniel L. Nielson, Darren G. Hawkins, J. Timmons Roberts, Michael G. Findley, Ryan M. Powers, Bradley Parks, Sven E. Wilson, and Robert L. Hicks. 2011.   More Dollars than Sense: Refining Our Knowledge of Development Finance Using AidData. World Development 39 (11): 1891-1906. \n AND Updated in: AidData. 2017. AidDataCore_ResearchRelease_Level1_v3.1 Research Releases dataset. Williamsburg, VA: AidData. Accessed on [date]. http://aiddata.org/datasets.")
+        citeMessage = "Please cite as\n Tierney, Michael J., Daniel L. Nielson, Darren G. Hawkins, J. Timmons Roberts, Michael G. Findley, Ryan M. Powers, Bradley Parks, Sven E. Wilson, and Robert L. Hicks. 2011.   More Dollars than Sense: Refining Our Knowledge of Development Finance Using AidData. World Development 39 (11): 1891-1906. \n AND Updated in: AidData. 2017. AidDataCore_ResearchRelease_Level1_v3.1 Research Releases dataset. Williamsburg, VA: AidData. Accessed on [date]. http://aiddata.org/datasets."),
+      
+      c(selector = "worldbank",
+      url = "http://databank.worldbank.org/data/download/WDI_csv.zip",
+      filetype = "zip",
+      filenameOut = "worldbank",
+      citeMessage = "Please cite as follows:\n\n INSERT CITATION HERE")
     )
   
   if(folder != "") dir.create(folder, showWarnings = TRUE)
@@ -58,6 +64,8 @@ downloadRawAidData <- function(dataset = "China",
   
 }
 
-# downloadRawAidData(dataset = "China",
-#                    folder = "",
-#                    filename = NULL)
+'
+downloadRawAidData(dataset = "AidDataCore",
+                   folder = "",
+                   filename = NULL)
+'

@@ -3,5 +3,6 @@
 export(downloadRawAidData)
 export(prepAidData)
 export(testLuca)
+export(unifyCountrynames)
 importFrom(magrittr,"%<>%")
 importFrom(magrittr,"%>%")

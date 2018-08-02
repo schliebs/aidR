@@ -24,9 +24,12 @@ Imports:
 RoxygenNote: 6.0.1
 Collate: 
     'importFrom.R'
+    'countrynames.R'
+    'randomHelpers.R'
     'test_demonstration.R'
     'downloadAidData.R'
     'unzipAidData.R'
+    'cleanAidData.R'
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

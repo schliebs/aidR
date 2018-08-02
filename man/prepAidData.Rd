@@ -9,7 +9,7 @@ prepAidData(filepath = "AidDataChina.zip", dataset = "China")
 \arguments{
 \item{filepath}{A character string of either a folder or zipfile (including suffix) including the data.}
 
-\item{dataset}{The Dataset chosen for download. Options currently include "China .}
+\item{dataset}{The Dataset chosen for download. Options currently include "AidDataCore","China", "worldbank", .}
 }
 \value{
 A data frame with the output data (further cleaning to be added.)

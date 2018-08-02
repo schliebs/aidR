@@ -3,7 +3,7 @@
 #' Unzip and process Data
 #' @description Description
 #' @param filepath A character string of either a folder or zipfile (including suffix) including the data. 
-#' @param dataset The Dataset chosen for download. Options currently include "China .
+#' @param dataset The Dataset chosen for download. Options currently include "AidDataCore","China", "worldbank", .
 #' @return A data frame with the output data (further cleaning to be added.)
 #' @examples
 #' \dontrun{
@@ -32,8 +32,13 @@ prepAidData <- function(filepath = "AidDataChina.zip",
         citeMessage = "testmessage"),
       
       c(selector = "AidDataCore",
-        filetarget = "https://github.com/AidData-WM/public_datasets/raw/master/chinaglobal/GlobalChineseOfficialFinanceDataset_v1.0.zip",
+        filetarget = "AidDataCoreFull_ResearchRelease_Level1_v3.1.csv",
         filetype = "xlsx",
+        citeMessage = "testmessage"),
+      
+      c(selector = "worldbank",
+        filetarget = "WID_csv/WDIData.csv",
+        filetype = "csv",
         citeMessage = "testmessage")
       )
   
@@ -52,11 +57,22 @@ prepAidData <- function(filepath = "AidDataChina.zip",
     fileDF %>% 
     dplyr::filter(selector == dataset)
   
+  if(df$selector == "AidDataCore"){
+    path <- paste0(exdir,"/",df$filetarget)
+    data <- 
+      readr::read_csv(path)
+  }
+  
   if(df$selector == "China"){
     path <- paste0(exdir,"/",df$filetarget)
-    
     data <- 
       openxlsx::read.xlsx(path,sheet = 1)
+  }
+  
+  if(df$selector == "worldbank"){
+    path <- paste0(exdir,"/",df$filetarget)
+    data <- 
+      readr::read_csv(path)
   }
   
   return(data)
