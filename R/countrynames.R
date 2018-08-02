@@ -29,13 +29,21 @@ unifyCountrynames <- function(inVec){
     c("Central African Rep.","Central African Republic"),
     c("Cabo Verde","Cape Verde"),
     c("Gambia, The","Gambia")
-  ) %>% as.data.frame() %>% set_names(c("input","output"))
+  ) %>% tibble::as.tibble() %>% 
+    purrr::set_names(c("input","output"))
   
   xx <- df$output
   names(xx) <- df$input
   
-  res <- inVec %>% str_replace_all(.,xx)
+  res <- inVec %>% stringr::str_replace_all(.,xx)
   
   return(res)
 }
 
+'
+ 
+x = c("Congo Kinshasa","Congo, Republic of","Congo Brazzaville","Cote d`Ivoire","Central African Rep.","Cabo Verde","Gambia, The")
+
+unifyCountrynames(x)
+
+'
