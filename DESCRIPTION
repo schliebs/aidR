@@ -9,14 +9,13 @@ Description:
   The aidR package does this and that.
 Depends:
   R (>= 3.4.1),
-  ggplot2,
+  tidyverse
 License: MIT
 Encoding: UTF-8
 URL: https://www.schliebs.github.io/aidR
 BugReports: https://www.github.com/schliebs/aidR
 LazyData: true
 Imports:
-  tidyverse,
   stringr,
   lubridate,
   magrittr,
