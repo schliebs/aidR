@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • aidR</title>
+<title>Clean China — clean_aidData • aidR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Clean China — clean_aidData" />
+
+<meta property="og:description" content="Description" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -110,81 +113,64 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Clean China</h1>
+    
+    <div class="hidden name"><code>clean_aidData.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Description</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="testLuca.html">testLuca()</a></code> <code><a href="testLuca.html">testLuca()</a></code> </p>
-        </td>
-        <td><p>Dirichlet-sample of a multinomial election poll</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
-          <p class="section-desc"><p>Other Functions</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="testLuca.html">testLuca()</a></code> <code><a href="testLuca.html">testLuca()</a></code> </p>
-        </td>
-        <td><p>Dirichlet-sample of a multinomial election poll</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="downloadRawAidData.html">downloadRawAidData()</a></code> </p>
-        </td>
-        <td><p>Download Raw Dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="prepAidData.html">prepAidData()</a></code> </p>
-        </td>
-        <td><p>Unzip and process Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="unifyCountrynames.html">unifyCountrynames()</a></code> </p>
-        </td>
-        <td><p>Unify countrynames</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subsaharaCountries.html">subsaharaCountries()</a></code> </p>
-        </td>
-        <td><p>Dirichlet-sample of a multinomial election poll</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>clean_aidData</span>(<span class='no'>df</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Core"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"full"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>a Data Frame containing the Raw  Dataset</p></td>
+    </tr>
+    <tr>
+      <th>dataset</th>
+      <td><p>Character String denoting which dataset is to be cleaned (takes "Core" or "China")</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A data frame containing <code>n</code> rows of blabla.</p>
+    
+    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
+
+    
+    <p>Do not operate heavy machinery within 8 hours of using this function.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>)
+<span class='fu'>mean</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 2</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-      <li><a href="#section-other">Other</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#warning">Warning</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

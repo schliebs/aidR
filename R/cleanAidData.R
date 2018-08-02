@@ -140,13 +140,13 @@ clean_aidData <- function(df,
 }
 
 
-cl <- clean_china(dfCHINA,level = "full")
-cl2 <- clean_china(dfCHINA,level = "donor-year")
-cl3 <- clean_china(dfCHINA,level = "donor-year-recipient")
-cl4 <- clean_china(dfCHINA,level = "donor-year-recipient-flow_classification")
-
-core <- clean_aidData(dfCORE,dataset = "Core",level = "full")
-core2 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year")
-core3 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient")
-core4 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient-flow_classification")
+# cl <- clean_china(dfCHINA,level = "full")
+# cl2 <- clean_china(dfCHINA,level = "donor-year")
+# cl3 <- clean_china(dfCHINA,level = "donor-year-recipient")
+# cl4 <- clean_china(dfCHINA,level = "donor-year-recipient-flow_classification")
+# 
+# core <- clean_aidData(dfCORE,dataset = "Core",level = "full")
+# core2 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year")
+# core3 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient")
+# core4 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient-flow_classification")
 
