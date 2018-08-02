@@ -30,4 +30,6 @@ reference:
   - '`prepAidData`'
   - '`unifyCountrynames`'
   - '`subsahara`'
+  - '`clean_china`'
+  - '`subsaharaCountries`'
 

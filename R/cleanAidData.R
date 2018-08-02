@@ -1,0 +1,118 @@
+# Clean China ------------
+
+#' Clean China
+#' @description Description
+#' @param df a Data Frame containing the Raw China Dataset
+#' @param par2 Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))
+#' @return A data frame containing \code{n} rows of blabla.
+#' @examples
+#' x <- c(1,2,3)
+#' mean(x)
+#' @section Warning:
+#' Do not operate heavy machinery within 8 hours of using this function.
+#' @export
+clean_china <- function(df,level = "full"){
+  
+  orig_names <- names(df)
+  
+  #### General Datamanagement
+  
+  # Throw out all with more than one recipient countries
+  df %<>% filter(recipient_count == 1)
+  
+  # Fix variable names
+  df %<>% rename(recipient = all_recipients)
+  
+  # Fix country names
+  df %<>% mutate_at(vars(recipient,donor),
+                    funs(unifyCountrynames(.)))
+  
+  # deflation correction? STILL DO THIS HERE!!!!!
+  df$amountUSD <- df$usd_defl_2014 %>% as.numeric() #check this
+  
+  # Flow class
+
+  df$flow_classification <- NA
+  df$flow_classification [df$flow_class == "ODA-like"] <- "ODA"
+  df$flow_classification [df$flow_class == "OOF-like"] <- "OOF"
+  df$flow_classification [df$flow_class == "Vague (Official Finance)"] <- "other"
+  
+  # grouping/summarising
+  
+  if(level == "full"){
+    
+    df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1))
+    
+    df2 <- df
+    
+    df3 <- left_join(df_grid,df2,by = c("year"))
+    
+  }
+  
+  if (level == "donor-year"){
+    
+    df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
+                           donor = df$donor %>% unique())
+    df2 <- 
+      df %>% 
+      group_by(donor,year) %>% 
+      summarise(aidSum = sum(amountUSD,na.rm = T))
+    
+    df3 <- left_join(df_grid,df2,by = c("year","donor"))
+    
+  }
+    
+  if(level == "donor-year-recipient"){
+    
+    df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
+                           recipient = df$recipient %>% unique(),
+                           donor = df$donor %>% unique())
+    df2 <- 
+      df %>% 
+      group_by(donor,year,recipient) %>% 
+      summarise(aidSum = sum(amountUSD,na.rm = T))
+    
+    df3 <- 
+      left_join(df_grid,df2,by = c("year","donor","recipient")) %>% 
+      arrange(donor,year,recipient)
+  }
+    
+    
+  if(level == "donor-year-recipient-type"){
+    
+    df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
+                           donor = df$donor %>% unique(),
+                           recipient = df$recipient %>% unique(),
+                           flow_classification = df$flow_classification %>% unique())
+    
+    df2 <- 
+      df %>% 
+      group_by(donor,year,recipient,flow_classification) %>% 
+      summarise(aidSum = sum(amountUSD,na.rm = T))
+    
+    df3 <- 
+      left_join(df_grid,
+                df2,
+                by = c("year","donor","recipient","flow_classification")) %>% 
+      arrange(donor,year,recipient,flow_classification)
+  }
+  
+  
+  df <- df3
+  out <- df
+  
+  # Names
+  
+  new_names <- names(df)[!names(df) %in% c(orig_names)]
+  removed_names <- orig_names[!orig_names %in% names(df)]
+    
+  message(paste0("Cleaned China Data.\n\n Original variable names contain:\n",paste0(orig_names,collapse = "; "),"\n\nnewly created variables contain:\n ",paste0(new_names,collapse = "; "),". \n\nRemoved variables are:\n ",paste0(removed_names,collapse = "; ")))
+  
+  return(out)
+}
+
+# 
+# cl <- clean_china(dfCHINA,level = "full")
+# cl2 <- clean_china(dfCHINA,level = "donor-year")
+# cl3 <- clean_china(dfCHINA,level = "donor-year-recipient")
+# cl4 <- clean_china(dfCHINA,level = "donor-year-recipient-flow_classification")

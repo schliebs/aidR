@@ -20,7 +20,8 @@ Imports:
   hrbrthemes,
   lubridate,
   magrittr,
-  openxlsx
+  openxlsx,
+  readxl
 RoxygenNote: 6.0.1
 Collate: 
     'importFrom.R'

@@ -37,7 +37,15 @@ downloadRawAidData <- function(dataset = "China",
       url = "http://databank.worldbank.org/data/download/WDI_csv.zip",
       filetype = "zip",
       filenameOut = "worldbank",
-      citeMessage = "Please cite as follows:\n\n INSERT CITATION HERE")
+      citeMessage = "Please cite as follows:\n\n INSERT CITATION HERE"),
+      
+      c(selector = "polity",
+        url = "http://www.systemicpeace.org/inscr/p4v2017.xls",
+        filetype = "xls",
+        filenameOut = "polity",
+        citeMessage =     message("Sorry, this data is not currently supported yet")
+#"Please cite as follows:\n\n INSERT CITATION HERE"
+        )
     )
   
   if(folder != "") dir.create(folder, showWarnings = TRUE)
@@ -68,4 +76,8 @@ downloadRawAidData <- function(dataset = "China",
 downloadRawAidData(dataset = "AidDataCore",
                    folder = "",
                    filename = NULL)
+
+downloadRawAidData(dataset = "polity",
+                   folder = "rawdata",
+filename = NULL)
 '

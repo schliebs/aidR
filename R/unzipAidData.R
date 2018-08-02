@@ -39,8 +39,15 @@ prepAidData <- function(filepath = "AidDataChina.zip",
       c(selector = "worldbank",
         filetarget = "WID_csv/WDIData.csv",
         filetype = "csv",
+        citeMessage = "testmessage"),
+      
+      c(selector = "polity",
+        filetarget = "polity.xls",
+        filetype = "xls",
         citeMessage = "testmessage")
-      )
+    )
+      
+  
   
   # Unzip
   if(filepath %>% str_sub(.,-4,-1) == ".zip"){
@@ -75,6 +82,14 @@ prepAidData <- function(filepath = "AidDataChina.zip",
       readr::read_csv(path)
   }
   
+  if(df$selector == "polity"){
+    message("Sorry, this data is not currently supported yet")
+    # path <- filepath
+    # data <- 
+    #   readxl::read_excel(path = path)
+  }
+  
+  
   return(data)
   
 }
@@ -84,6 +99,6 @@ downloadRawAidData(dataset = "China") %>%
   prepAidData(filepath = .,
               dataset = "China")
 
-prepAidData(filepath = "AidDataChina.zip",
+dfCHINA <- prepAidData(filepath = "rawdata/AidDataChina.zip",
             dataset = "China")
 '  
