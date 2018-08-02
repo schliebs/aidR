@@ -117,7 +117,7 @@ clean_aidData <- function(df_list,
   }
     
     
-  if(level == "donor-year-recipient-type"){
+  if(level == "donor-year-recipient-flow_classification"){
     
     df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
                            donor = df$donor %>% unique(),
