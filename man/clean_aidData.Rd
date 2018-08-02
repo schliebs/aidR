@@ -4,14 +4,14 @@
 \alias{clean_aidData}
 \title{Clean China}
 \usage{
-clean_aidData(df, dataset = "Core", level = "full")
+clean_aidData(df_list, dataset = c("China", "Core"), level = "donor-year")
 }
 \arguments{
-\item{df}{a Data Frame containing the Raw  Dataset}
-
-\item{dataset}{Character String denoting which dataset is to be cleaned (takes "Core" or "China")}
+\item{dataset}{Character String denoting which dataset is to be cleaned (takes "Core" or "China". Takes vector c("Core","China") if datasets shall be merged)}
 
 \item{level}{Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))}
+
+\item{df}{a Data Frame containing the Raw  Dataset}
 }
 \value{
 A data frame containing \code{n} rows of blabla.

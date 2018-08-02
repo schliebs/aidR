@@ -126,22 +126,22 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>clean_aidData</span>(<span class='no'>df</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='st'>"Core"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"full"</span>)</pre>
+    <pre class="usage"><span class='fu'>clean_aidData</span>(<span class='no'>df_list</span>, <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"China"</span>, <span class='st'>"Core"</span>), <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"donor-year"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>a Data Frame containing the Raw  Dataset</p></td>
-    </tr>
-    <tr>
       <th>dataset</th>
-      <td><p>Character String denoting which dataset is to be cleaned (takes "Core" or "China")</p></td>
+      <td><p>Character String denoting which dataset is to be cleaned (takes "Core" or "China". Takes vector c("Core","China") if datasets shall be merged)</p></td>
     </tr>
     <tr>
       <th>level</th>
       <td><p>Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))</p></td>
+    </tr>
+    <tr>
+      <th>df</th>
+      <td><p>a Data Frame containing the Raw  Dataset</p></td>
     </tr>
     </table>
     

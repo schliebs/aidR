@@ -3,7 +3,7 @@
 #' Clean China
 #' @description Description
 #' @param df a Data Frame containing the Raw  Dataset
-#' @param dataset Character String denoting which dataset is to be cleaned (takes "Core" or "China")
+#' @param dataset Character String denoting which dataset is to be cleaned (takes "Core" or "China". Takes vector c("Core","China") if datasets shall be merged)
 #' @param level Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))
 #' @return A data frame containing \code{n} rows of blabla.
 #' @examples
@@ -12,18 +12,29 @@
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 #' @export
-clean_aidData <- function(df,
-                        dataset = "Core",
-                        level = "full"){
+clean_aidData <- function(df_list,
+                        dataset = c("China","Core"),
+                        level = "donor-year"){
+  
+  # df_list <- list(dfCHINA,dfCORE)
+  
+  if(class(df_list) != "list"){
+    df_list <- list(df_list)
+  }
+  
+  names(df_list) <- dataset
+  
+  sepList <- 
+    purrr::map2(.x = df_list,
+                .y = names(df_list),
+             .f = function(df,name){
   
   orig_names <- names(df)
   
   #### General Datamanagement
   
 
-  
-
-  if(dataset == "Core"){
+  if("Core" %in% name){
     
     # Remove year 9999
     df %<>% filter(year != 9999)
@@ -39,7 +50,7 @@ clean_aidData <- function(df,
     
   }
   
-  if(dataset == "China"){
+  if("China" %in% name){
     
     # Throw out all with more than one recipient countries
     df %<>% filter(recipient_count == 1)
@@ -134,10 +145,19 @@ clean_aidData <- function(df,
   new_names <- names(df)[!names(df) %in% c(orig_names)]
   removed_names <- orig_names[!orig_names %in% names(df)]
     
-  message(paste0("Cleaned China Data.\n\n Original variable names contain:\n",paste0(orig_names,collapse = "; "),"\n\nnewly created variables contain:\n ",paste0(new_names,collapse = "; "),". \n\nRemoved variables are:\n ",paste0(removed_names,collapse = "; ")))
+  message(paste0("Cleaned ",dataset,"  Data.\n\n Original variable names contain:\n",paste0(orig_names,collapse = "; "),"\n\nnewly created variables contain:\n ",paste0(new_names,collapse = "; "),". \n\nRemoved variables are:\n ",paste0(removed_names,collapse = "; ")))
+  
+  
   
   return(out)
+  })
+  
+  merged <- 
+    dplyr::bind_rows(sepList)
+
+return(merged)
 }
+
 
 
 # cl <- clean_china(dfCHINA,level = "full")
@@ -149,4 +169,20 @@ clean_aidData <- function(df,
 # core2 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year")
 # core3 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient")
 # core4 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient-flow_classification")
+
+# merged <- clean_aidData(df_list = list(dfCORE,dfCHINA),
+#                         dataset = c("Core","China"),
+#                         level = "full")
+# 
+# merged2 <- clean_aidData(list(dfCORE,dfCHINA),
+#                          dataset = c("Core","China"),
+#                          level = "donor-year")
+# 
+# merged3 <- clean_aidData(list(dfCORE,dfCHINA),
+#                          dataset = c("Core","China"),
+#                          level = "donor-year-recipient")
+# 
+# merged4 <- clean_aidData(list(dfCORE,dfCHINA),
+#                          dataset = c("Core","China"),
+#                          level = "donor-year-recipient-flow_classification")
 
