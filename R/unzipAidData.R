@@ -94,6 +94,7 @@ prepAidData <- function(filepath = "AidDataChina.zip",
   
 }
 
+
 '
 downloadRawAidData(dataset = "China") %>% 
   prepAidData(filepath = .,
@@ -101,4 +102,7 @@ downloadRawAidData(dataset = "China") %>%
 
 dfCHINA <- prepAidData(filepath = "rawdata/AidDataChina.zip",
             dataset = "China")
+
+dfCORE <- prepAidData(filepath = "rawdata/AidDataCore.zip",
+            dataset = "AidDataCore")
 '  

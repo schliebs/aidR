@@ -2,8 +2,9 @@
 
 #' Clean China
 #' @description Description
-#' @param df a Data Frame containing the Raw China Dataset
-#' @param par2 Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))
+#' @param df a Data Frame containing the Raw  Dataset
+#' @param dataset Character String denoting which dataset is to be cleaned (takes "Core" or "China")
+#' @param level Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))
 #' @return A data frame containing \code{n} rows of blabla.
 #' @examples
 #' x <- c(1,2,3)
@@ -11,32 +12,59 @@
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 #' @export
-clean_china <- function(df,level = "full"){
+clean_aidData <- function(df,
+                        dataset = "Core",
+                        level = "full"){
   
   orig_names <- names(df)
   
   #### General Datamanagement
   
-  # Throw out all with more than one recipient countries
-  df %<>% filter(recipient_count == 1)
+
   
-  # Fix variable names
-  df %<>% rename(recipient = all_recipients)
+
+  if(dataset == "Core"){
+    
+    # Remove year 9999
+    df %<>% filter(year != 9999)
+    
+    # deflation correction? STILL DO THIS HERE!!!!!
+    df$amountUSD <- df$commitment_amount_usd_constant %>% as.numeric() #check this
+    
+    # Flow class
+    df$flow_classification <- NA
+    df$flow_classification [df$flow_name %in% c("ODA Grants","ODA Loans")] <- "ODA"
+    df$flow_classification [df$flow_name %in% c("OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "OOF"
+    df$flow_classification [!df$flow_name %in% c("ODA Grants","ODA Loans","OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "other"
+    
+  }
+  
+  if(dataset == "China"){
+    
+    # Throw out all with more than one recipient countries
+    df %<>% filter(recipient_count == 1)
+    
+    # Fix variable names
+    df %<>% rename(recipient = all_recipients)
+    
+    # deflation correction? STILL DO THIS HERE!!!!!
+    df$amountUSD <- df$usd_defl_2014 %>% as.numeric() #check this
+    
+    # Flow class
+    df$flow_classification <- NA
+    df$flow_classification [df$flow_class == "ODA-like"] <- "ODA"
+    df$flow_classification [df$flow_class == "OOF-like"] <- "OOF"
+    df$flow_classification [df$flow_class == "Vague (Official Finance)"] <- "other"
+    
+  }
+  
   
   # Fix country names
   df %<>% mutate_at(vars(recipient,donor),
                     funs(unifyCountrynames(.)))
   
-  # deflation correction? STILL DO THIS HERE!!!!!
-  df$amountUSD <- df$usd_defl_2014 %>% as.numeric() #check this
-  
-  # Flow class
 
-  df$flow_classification <- NA
-  df$flow_classification [df$flow_class == "ODA-like"] <- "ODA"
-  df$flow_classification [df$flow_class == "OOF-like"] <- "OOF"
-  df$flow_classification [df$flow_class == "Vague (Official Finance)"] <- "other"
-  
+
   # grouping/summarising
   
   if(level == "full"){
@@ -111,8 +139,14 @@ clean_china <- function(df,level = "full"){
   return(out)
 }
 
-# 
-# cl <- clean_china(dfCHINA,level = "full")
-# cl2 <- clean_china(dfCHINA,level = "donor-year")
-# cl3 <- clean_china(dfCHINA,level = "donor-year-recipient")
-# cl4 <- clean_china(dfCHINA,level = "donor-year-recipient-flow_classification")
+
+cl <- clean_china(dfCHINA,level = "full")
+cl2 <- clean_china(dfCHINA,level = "donor-year")
+cl3 <- clean_china(dfCHINA,level = "donor-year-recipient")
+cl4 <- clean_china(dfCHINA,level = "donor-year-recipient-flow_classification")
+
+core <- clean_aidData(dfCORE,dataset = "Core",level = "full")
+core2 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year")
+core3 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient")
+core4 <- clean_aidData(dfCORE,dataset = "Core",level = "donor-year-recipient-flow_classification")
+

@@ -17,7 +17,7 @@ BugReports: https://www.github.com/schliebs/aidR
 LazyData: true
 Imports:
   tidyverse,
-  hrbrthemes,
+  stringr,
   lubridate,
   magrittr,
   openxlsx,
