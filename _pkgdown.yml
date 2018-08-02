@@ -26,8 +26,8 @@ reference:
   desc: Other Functions
   contents:
   - '`testLuca`'
-  - '`loremipsum`'
   - '`downloadRawAidData`'
   - '`prepAidData`'
   - '`unifyCountrynames`'
+  - '`subsahara`'
 

@@ -47,3 +47,24 @@ x = c("Congo Kinshasa","Congo, Republic of","Congo Brazzaville","Cote d`Ivoire",
 unifyCountrynames(x)
 
 '
+
+
+# Countrynames all --------------
+
+#' Dirichlet-sample of a multinomial election poll
+#' @description Description
+#' @return A character vector with subsaharan country names.
+#' @examples
+#' subsahara()
+#' @section Warning:
+#' Do not operate heavy machinery within 8 hours of using this function.
+#' @export
+subsahara <- function(){
+  
+  countrynames<- c("Angola","Benin","Botswana","Burkina Faso","Burundi","Cameroon","Cape Verde","Central African Republic","Chad",
+                   "Comoros","Congo, Rep.","Congo, Dem. Rep.","Ivory Coast","Cote d'Ivoire", "Cote D'Ivoire","Djibouti","Equatorial Guinea","Eritrea","Ethiopia", "Gabon", "Gambia"
+                   ,"Ghana", "Guinea","Guinea-Bissau","Kenya","Lesotho","Liberia","Madagascar","Malawi","Mali","Mauritania","Mauritius","Mozambique","Namibia","Niger",
+                   "Nigeria","Rwanda","Sao Tome and Principe","Senegal","Seychelles","Sierra Leone","Somalia","South Africa","Swaziland","Tanzania","Togo","Uganda","Zambia","Zimbabwe", "Sudan")
+  return(countrynames)
+  
+}
