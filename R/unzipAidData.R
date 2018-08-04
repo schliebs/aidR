@@ -21,8 +21,8 @@
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 #' @export
-prepAidData <- function(filepath = "AidDataChina.zip",
-                        dataset = "China"){
+prepAidData <- function(filepath = "rawdata/WITS_trade.zip",
+                        dataset = "WITS"){
   
   fileDF <- 
     dplyr::bind_rows(
@@ -44,7 +44,13 @@ prepAidData <- function(filepath = "AidDataChina.zip",
       c(selector = "polity",
         filetarget = "polity.xls",
         filetype = "xls",
-        citeMessage = "testmessage")
+        citeMessage = "testmessage"),
+      
+      c(selector = "WITS",
+        filetarget = NA,
+        filetype = "csv",
+        citeMessage = "WITS blabla"
+        )
     )
       
   
@@ -76,6 +82,27 @@ prepAidData <- function(filepath = "AidDataChina.zip",
       openxlsx::read.xlsx(path,sheet = 1)
   }
   
+  if(df$selector == "WITS"){
+
+    allfiles <- list.files(exdir)
+    
+    # Reading in function
+    readWITS <- function(csvPath){
+      df <- 
+        readr::read_csv(paste0(exdir,"/",csvPath)) %>% 
+        mutate_all(funs(as.character(.)))
+      return(df)
+    }
+    
+    df_list <- map(.x = allfiles, 
+                .f = ~ readWITS(.x)
+                )
+    
+    data <- bind_rows(df_list)
+    
+    
+  }
+  
   if(df$selector == "worldbank"){
     path <- paste0(exdir,"/",df$filetarget)
     data <- 
@@ -105,4 +132,8 @@ dfCHINA <- prepAidData(filepath = "rawdata/AidDataChina.zip",
 
 dfCORE <- prepAidData(filepath = "rawdata/AidDataCore.zip",
             dataset = "AidDataCore")
+
+WITS <- 
+  prepAidData(filepath = "rawdata/WITS_trade.zip",
+              dataset = "WITS")
 '  

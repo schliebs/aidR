@@ -35,6 +35,12 @@ downloadRawAidData <- function(dataset = "China",
         filenameOut = "AidDataCore",
         citeMessage = "Please cite as\n Tierney, Michael J., Daniel L. Nielson, Darren G. Hawkins, J. Timmons Roberts, Michael G. Findley, Ryan M. Powers, Bradley Parks, Sven E. Wilson, and Robert L. Hicks. 2011.   More Dollars than Sense: Refining Our Knowledge of Development Finance Using AidData. World Development 39 (11): 1891-1906. \n AND Updated in: AidData. 2017. AidDataCore_ResearchRelease_Level1_v3.1 Research Releases dataset. Williamsburg, VA: AidData. Accessed on [date]. http://aiddata.org/datasets."),
       
+      c(selector = "WITS",
+        url = "...",
+        filetype = "zip",
+        filenameOut = "WITS_Trade",
+        citeMessage = "Please cite as\n insert WITS citation!!!"),
+      
       c(selector = "worldbank",
       url = "http://databank.worldbank.org/data/download/WDI_csv.zip",
       filetype = "zip",

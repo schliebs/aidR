@@ -4,7 +4,7 @@
 \alias{prepAidData}
 \title{Unzip and process Data}
 \usage{
-prepAidData(filepath = "AidDataChina.zip", dataset = "China")
+prepAidData(filepath = "rawdata/WITS_trade.zip", dataset = "WITS")
 }
 \arguments{
 \item{filepath}{A character string of either a folder or zipfile (including suffix) including the data.}
