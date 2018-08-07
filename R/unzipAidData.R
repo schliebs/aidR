@@ -37,7 +37,7 @@ prepAidData <- function(filepath = "rawdata/WITS_trade.zip",
         citeMessage = "testmessage"),
       
       c(selector = "worldbank",
-        filetarget = "WID_csv/WDIData.csv",
+        filetarget = "WDIData.csv",
         filetype = "csv",
         citeMessage = "testmessage"),
       
