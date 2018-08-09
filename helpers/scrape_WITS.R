@@ -37,7 +37,7 @@ rd = rsDriver(extraCapabilities = eCaps)
 remdr = rd[["client"]] 
 remdr$maxWindowSize()
 
-for (cn in countrycodes_3[36:37]){
+for (cn in countrycodes_3[46:49]){
 #for (cn in "TZA"){
   print(Sys.time())
   

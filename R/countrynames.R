@@ -27,10 +27,12 @@ unifyCountrynames <- function(inVec){
     c("Congo, Republic of","Congo (the)"),#
     c("Congo, Rep.","Congo (the)"),#
     c("Congo","Congo (the)"),#
+    c("Ethiopia(excludes Eritrea)","Ethiopia"),#
     c("Congo (Democratic Republic of the)","Democratic Republic of the Congo (the)"),#
     c("Congo Brazzaville","Congo, Rep."),#
     c("Republic of Congo","Congo, Rep."),#
     c("Congo (Brazzaville)","Congo, Rep."),
+    c("Cote d Ivoire","Côte d'Ivoire"),#
     c("Cote d`Ivoire","Côte d'Ivoire"),#
     c("Cote D'Ivoire","Côte d'Ivoire"),#
     c("Central African Republic","Central African Republic (the)"),##
@@ -43,7 +45,7 @@ unifyCountrynames <- function(inVec){
     c("Sao Tome & Principe","Sao Tome and Principe"),#
     c("Tanzania","United Republic of Tanzania (the)"),
     c("Tanzania (United Republic of)","United Republic of Tanzania (the)")#
-  ) %>% tibble::as.tibble() %>% 
+  ) %>% tibble::as.tibble()  %>% 
     purrr::set_names(c("input","output"))
   
   xx <- df$output
