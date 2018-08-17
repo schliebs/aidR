@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unify countrynames — unifyCountrynames • aidR</title>
+<title>Dirichlet-sample of a multinomial election poll — donorCountries • aidR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Unify countrynames — unifyCountrynames" />
+<meta property="og:title" content="Dirichlet-sample of a multinomial election poll — donorCountries" />
 
 <meta property="og:description" content="Description" />
 <meta name="twitter:card" content="summary" />
@@ -115,9 +115,9 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Unify countrynames</h1>
+    <h1>Dirichlet-sample of a multinomial election poll</h1>
     
-    <div class="hidden name"><code>unifyCountrynames.Rd</code></div>
+    <div class="hidden name"><code>donorCountries.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -126,20 +126,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>unifyCountrynames</span>(<span class='no'>inVec</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>inVec</th>
-      <td><p>A vector or character string of country name(s)</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>donorCountries</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector containing the unified strings.</p>
+    <p>A character vector with subsaharan country names.</p>
     
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
@@ -148,22 +139,11 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Congo Kinshasa"</span>,
-      <span class='st'>"Congo, Republic of"</span>,
-      <span class='st'>"Congo Brazzaville"</span>,
-      <span class='st'>"Cote d`Ivoire"</span>,
-      <span class='st'>"Central African Rep."</span>,
-      <span class='st'>"Cabo Verde"</span>,
-      <span class='st'>"Gambia, The"</span>)
-
- <span class='fu'>unifyCountrynames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: binding character and factor vector, coercing into character vector</span></div><div class='output co'>#&gt; <span class='warning'>Warning: binding character and factor vector, coercing into character vector</span></div><div class='output co'>#&gt; [1] "Congo, Dem. Rep."     "Congo (the)"          "Congo, Rep."         
-#&gt; [4] "CÃ´te d'Ivoire"       "Central African Rep." "Cabo Verde"          
-#&gt; [7] "Gambia (the)"        </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>subsahara</span>()</div><div class='output co'>#&gt; <span class='error'>Error in subsahara(): konnte Funktion "subsahara" nicht finden</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 

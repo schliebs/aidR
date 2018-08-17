@@ -12,12 +12,17 @@ library("rvest")
 library("RSelenium")
 library("wdman")
 
+countrynames_donors<-c("United States", "Germany", "France", "United Kingdom","Japan", 
+                       "Netherlands", "Canada", "Sweden", "Italy", "Norway", "China")
+
+donors_codes <- c("USA","DEU","FRA","GBR","JPN","NLD","CAN","SWE","ITA","NOR","CHN")
+
 
 human_wait = function(t = 5, tt = 7){
   Sys.sleep(sample(seq(t, tt, by=0.001), 1)) 
 }
 
-pathh <- "C:/Users/Schliebs/Desktop/ecpr_2018/data/wits_download"
+pathh <- "C:/Users/Schliebs/Desktop/ecpr_2018/data/wits_download_donors"
 
 eCaps <- list(
   chromeOptions = 
@@ -31,19 +36,18 @@ eCaps <- list(
 
 #############################
 
-years <- c(2006:2016)
 
 rd = rsDriver(extraCapabilities = eCaps)  
 remdr = rd[["client"]] 
 remdr$maxWindowSize()
 
-for (cn in countrycodes_3[46:49]){
+for (cn in donors_codes[6]){
 #for (cn in "TZA"){
   print(Sys.time())
   
   tryCatch({
     
-  for(year in c(1988:2016)){
+  for(year in c(2010:2016)){
     
     # if ("WITS-Partner (100).xlsx" %in% list.files(eCaps$chromeOptions$prefs$download.default_directory)){}
     

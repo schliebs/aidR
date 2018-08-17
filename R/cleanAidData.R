@@ -33,6 +33,14 @@ clean_aidData <- function(df_list,
   
   #### General Datamanagement
   
+  df$crs <- df$crs_sector_code
+  
+  df <- 
+    left_join(df,
+              aidR::crs %>% 
+               #crs %>% 
+                select(category,crs_class = classification) %>% distinct(),
+              by = c("crs" = "category"))
 
   if("Core" %in% name){
     
@@ -69,6 +77,7 @@ clean_aidData <- function(df_list,
     
   }
   
+
   
   # Fix country names
   df %<>% mutate_at(vars(recipient,donor),
@@ -136,6 +145,25 @@ clean_aidData <- function(df_list,
       arrange(donor,year,recipient,flow_classification)
   }
   
+  if(level == "donor-year-recipient-crs"){
+    
+    df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
+                           donor = df$donor %>% unique(),
+                           recipient = df$recipient %>% unique(),
+                           crs_class = df$crs_class %>% unique())
+    
+    df2 <- 
+      df %>% 
+      group_by(donor,year,recipient,crs_class) %>% 
+      summarise(aidSum = sum(amountUSD,na.rm = T))
+    
+    df3 <- 
+      left_join(df_grid,
+                df2,
+                by = c("year","donor","recipient","crs_class")) %>% 
+      arrange(donor,year,recipient,crs_class)
+  }
+  
   
   df <- df3
   out <- df
@@ -186,3 +214,10 @@ return(merged)
 #                          dataset = c("Core","China"),
 #                          level = "donor-year-recipient-flow_classification")
 
+# library(magrittr)
+# merged5 <- clean_aidData(list(dfCORE,dfCHINA),
+#                          dataset = c("Core","China"),
+#                          level = "donor-year-recipient-crs")
+# 
+# merged5 %>% filter(donor %in% c("United States","China")) %>% View()
+# 

@@ -20,6 +20,18 @@
 unifyCountrynames <- function(inVec){
   
   df <- rbind(
+    # MS UN Calls
+    c("Central African Republic","Central African Republic (the)"),
+    c("Comoros","Comoros (the)"),
+    c("Congo","Congo (the)"),
+    c("Côte D'Ivoire","Côte d'Ivoire"),
+    c("Democratic Republic of the Congo","Democratic Republic of the Congo (the)"),
+    c("Gambia (Islamic Republic of the)","Gambia (the)"),
+    c("Guinea Bissau","Guinea-Bissau"),
+    c("Niger","Niger (the)"),
+    c("Suden","Sudan (the)"),
+    c("United Republic of Tanzania","United Republic of Tanzania (the)"),
+    # old luca
     c("Congo, Democratic Republic of","Democratic Republic of the Congo (the)"),#
     c("Congo, Dem. Rep.","Democratic Republic of the Congo (the)"),#
     c("Congo Kinshasa","Congo, Dem. Rep."),#
@@ -51,7 +63,13 @@ unifyCountrynames <- function(inVec){
   xx <- df$output
   names(xx) <- df$input
   
-  res <- inVec %>% stringr::str_replace_all(.,xx)
+  df2 <- data.frame(input = inVec,
+                    output = inVec) %>% 
+    filter(!input %in% df$input)
+  
+  df <- bind_rows(df,df2)
+  
+  res <- df$output [inVec %>% match(df$input)]
   
   return(res)
 }
@@ -85,3 +103,26 @@ subsaharaCountries <- function(){
   return(countrynames)
   
 }
+
+
+
+#' Dirichlet-sample of a multinomial election poll
+#' @description Description
+#' @return A character vector with subsaharan country names.
+#' @examples
+#' subsahara()
+#' @section Warning:
+#' Do not operate heavy machinery within 8 hours of using this function.
+#' @export
+donorCountries <- function(){
+  
+  countrynames_donors<-c("United States", "Germany", "France", "United Kingdom","Japan", 
+                         "Netherlands", "Canada", "Sweden", "Italy", "Norway", "China")
+  return(countrynames_donors)
+  
+}
+
+
+
+
+
