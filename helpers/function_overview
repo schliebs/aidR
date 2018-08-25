@@ -18,7 +18,102 @@ Function: clean_aiddata
 Description:
   - Cleans available datasets unzipped through 'unzip_aiddata'
   - Constant USD_2010
-  - Country Names by UN definition
+  - Country Names by UN definition through 'verify_countrynames'
   - Country Codes ISO 3
 
 Function: merge_aiddata
+
+Description:
+  - Merges available datasets cleaned through 'clean_aiddata'
+  - Option: long or wide format
+  - Prime Variable: Recipient country & year
+  
+
+Function: 'verify_countrynames'
+
+Description: 
+  - Corrects all countrynames to identical UN names 
+  
+Function: 'verify_countrycodes'
+
+Description: 
+  - Corrects all countrycodes to identical UN codes (ISO 3166)  
+  
+
+Function: 'lag_aid'
+
+Description:
+  - Lagges variables with k= 1 to 10 years
+  
+  
+Function: 'diff_aid'
+
+Description:
+  - creates change with k= 1 to 10 years
+  
+Function: 'avg_aid'
+
+Description:
+  - averages variables with k= 2 to 10 years
+  - starting date used by 'start' and numerical year
+  - type =c(moving, starr), whereby moving means that a moving average of k=2 to 10 is builded and starr takes arithmetic mean between t0 and k years before
+  
+  
+Function: 'flags_aid'
+
+Description: 
+  - adds flags-list to visualization for recipient and donor
+  
+  
+Function: 'geodata_aid'
+
+Description: 
+  - adds geocoding for recipient and donor to visualize
+  - adds variable for neighbour countries
+  - adds information about sea access
+  - adds information about region
+  - adds information about distance between donor and recipient
+
+
+Function: 'shiny_aid'
+
+Description: 
+  - Produces Shiny output for specific recipient and donor countries between specific period
+  
+
+Function: 'exportdata_aid'
+
+Description:
+  - Gives absolute and share of imports and exports for specific recipient and all other donors
+  - produces dyad trade export competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
+  - select region and or continent
+  
+Function: 'unvotes_aid'
+
+Description: 
+  - produces dyad un votes competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
+  - select region and or continent
+  - measured as distance model
+  
+  
+Function: 'unseats_aid'
+
+Description: 
+  - produces dyad trade export competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
+  - select region and or continent
+
+
+- Visualisierung
+ + Aid over period x (als Funktion und dann mit GGPLOT)
+ + Geo Heatmap 
+- Ratios/Shares (nach Sektor und Country)
+- Nachbarschaftsländer (für Netzwerkanalyse)
+- Sektordifferenzierung (nach OOF/ODA/others/Vague/ und dach donor codes (CRS))
+- Correlationplot im Matrixformat
+- Coefficientplot
+- Donor Agency
+Das sind meine Ideen, kannstentweder einzeln diskutieren oder gesamt. EIniges kommt von wo anders etc. aber sollte mal angedacht werden
+je nachdem wie wir unser Modell aufbauen (mit Ratio) recipient similarity etc. sollten wir auch diese Variablen reinhauen
+gerade bei Distanz-, Netzwerk-, und Räumlichkeitsmodellen können wir super viel machen
+hat jetzt aber ja eh erst mal nicht prio 1
+  
