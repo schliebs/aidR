@@ -8,9 +8,10 @@ devtools::build()
 
 # pdf vignette bauen
 pack <- "aidR"
-path <- "C:/Users/Schliebs/OneDrive/github/packages/aidR" #getwd()#find.package(pack)#
-file.remove("C:/Users/Schliebs/OneDrive/github/packages/aidR/aidR.pdf")
+path <- "" #getwd()#find.package(pack)#
+file.remove("aidR.pdf")
 system(paste(shQuote(file.path(R.home("bin"), "R")),"CMD", "Rd2pdf", shQuote(path)))
+
 
 source("helpers/update_yaml.R")
 update_yaml("aidR", overwrite = T)

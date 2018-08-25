@@ -4,7 +4,8 @@
 \alias{clean_aidData}
 \title{Clean China}
 \usage{
-clean_aidData(df_list, dataset = c("China", "Core"), level = "donor-year")
+clean_aidData(df_list, dataset = c("China", "Core"),
+  level = "donor-year")
 }
 \arguments{
 \item{dataset}{Character String denoting which dataset is to be cleaned (takes "Core" or "China". Takes vector c("Core","China") if datasets shall be merged)}
@@ -27,4 +28,7 @@ Do not operate heavy machinery within 8 hours of using this function.
 \examples{
 x <- c(1,2,3)
 mean(x)
+}
+\references{
+Data stems from nice people
 }

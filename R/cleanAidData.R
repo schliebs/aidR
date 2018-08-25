@@ -6,6 +6,7 @@
 #' @param dataset Character String denoting which dataset is to be cleaned (takes "Core" or "China". Takes vector c("Core","China") if datasets shall be merged)
 #' @param level Level (c("full","donor-year","donor-year-recipient","donor-year-recipient-type"))
 #' @return A data frame containing \code{n} rows of blabla.
+#' @references Data stems from nice people
 #' @examples
 #' x <- c(1,2,3)
 #' mean(x)

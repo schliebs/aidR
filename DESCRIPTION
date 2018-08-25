@@ -3,7 +3,7 @@ Title: Load,
 Version: 0.0.0.9000
 Authors@R: c(
    person("Marcel", "Schliebs", ,role = c("aut","cre"), email = "m.schliebs@zeppelin-university.net"), 
-   person("Luca", "Messerschmidt", role = "aut")
+   person("Luca", "Messerschmidt", role = "aut", email = "l.messerschmidt@zeppelin-university.net" )
    )
 Description:
   The aidR package does this and that.
@@ -21,7 +21,7 @@ Imports:
   magrittr,
   openxlsx,
   readxl
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Collate: 
     'importFrom.R'
     'countrynames.R'

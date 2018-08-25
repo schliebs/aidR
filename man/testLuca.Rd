@@ -2,7 +2,6 @@
 % Please edit documentation in R/randomHelpers.R, R/test_demonstration.R
 \name{testLuca}
 \alias{testLuca}
-\alias{testLuca}
 \title{Dirichlet-sample of a multinomial election poll}
 \usage{
 testLuca(par1, par2)
