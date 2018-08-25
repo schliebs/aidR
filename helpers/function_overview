@@ -81,39 +81,76 @@ Description:
   - Produces Shiny output for specific recipient and donor countries between specific period
   
 
-Function: 'exportdata_aid'
+Function: 'wits_aid'
 
 Description:
   - Gives absolute and share of imports and exports for specific recipient and all other donors
-  - produces dyad trade export competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
   - select region and or continent
+  
+Function: 'tradematrix_aid'
+
+Description:
+  - produces dyad trade export competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
+  - produces dyad trade import competition matrix
+  - select region and or continent  
   
 Function: 'unvotes_aid'
 
 Description: 
+  - adds information about voting decisions
+  - adds absolute and share of alligned voting
+  
+Function: 'politicalmatrix_aid'
+
+Description: 
   - produces dyad un votes competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
   - select region and or continent
-  - measured as distance model
+  - measured as distance model  
   
   
 Function: 'unseats_aid'
 
 Description: 
-  - produces dyad trade export competition matrix (see Bathel et al. (2014) or Messerschmidt & Schliebs (2018))
-  - select region and or continent
-
-
-- Visualisierung
- + Aid over period x (als Funktion und dann mit GGPLOT)
- + Geo Heatmap 
-- Ratios/Shares (nach Sektor und Country)
-- Nachbarschaftsländer (für Netzwerkanalyse)
-- Sektordifferenzierung (nach OOF/ODA/others/Vague/ und dach donor codes (CRS))
-- Correlationplot im Matrixformat
-- Coefficientplot
-- Donor Agency
-Das sind meine Ideen, kannstentweder einzeln diskutieren oder gesamt. EIniges kommt von wo anders etc. aber sollte mal angedacht werden
-je nachdem wie wir unser Modell aufbauen (mit Ratio) recipient similarity etc. sollten wir auch diese Variablen reinhauen
-gerade bei Distanz-, Netzwerk-, und Räumlichkeitsmodellen können wir super viel machen
-hat jetzt aber ja eh erst mal nicht prio 1
+  - adds information about seats in UN security council
   
+  
+Function: 'polity_aid'
+
+Description: 
+  - adds information about degree of democracy (CFSP)
+  
+  
+Function: 'wdi_aid'
+
+Description: 
+  - adds information from worldbank development indicators
+  
+Function: 'disaster_aid'
+
+Description: 
+  - adds information about a disaster that took place in recipent country
+  - binary variable per year
+  
+  
+Function: 'heatmap_aid'
+
+Description: 
+  - Visualizes aid flows by donor to specific recipient or region
+  
+  
+Function: 'crs_aid'
+
+Description: 
+  - adds classification for aiddata: political, economic, humanitarian aid
+  
+  
+Function: 'correlationplot_aid'
+
+Description: 
+  - produces correlationplot for 2 donor aid transfers, whereby second donor is lagges 
+  
+  
+Function: 'coefficientplot_aid'
+
+Description: 
+  - produces correlationplot for 2 donor aid transfers, whereby second donor is lagges   
