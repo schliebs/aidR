@@ -1,5 +1,24 @@
 #aidR Package - Functions
 
-Funktion	Beschreibung	Programmiert	Funktioniert	Description	Einbindung
+Function	Description	Status
 
-Funktion: 
+Function: get_aiddata 
+
+Description:
+  - Downloads available datasets from aiddata.org, Worldbank, Polity Project etc.
+  - Choose them manually by string c("aiddata_core", "aiddata_chn", "wits", "unvotes","uncouncil","wdi","polity")
+  
+Function: unzip_aiddata
+
+Description:
+  - Unzips available datasets loaded through 'get_aiddata' function
+
+Function: clean_aiddata
+
+Description:
+  - Cleans available datasets unzipped through 'unzip_aiddata'
+  - Constant USD_2010
+  - Country Names by UN definition
+  - Country Codes ISO 3
+
+Function: merge_aiddata
