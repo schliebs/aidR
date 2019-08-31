@@ -17,12 +17,14 @@ countrynames_donors<-c("United States", "Germany", "France", "United Kingdom","J
 
 donors_codes <- c("USA","DEU","FRA","GBR","JPN","NLD","CAN","SWE","ITA","NOR","CHN")
 
+countrynames_donors <- "Spain"
+donors_codes <- c("ESP")
 
 human_wait = function(t = 5, tt = 7){
   Sys.sleep(sample(seq(t, tt, by=0.001), 1)) 
 }
 
-pathh <- "C:/Users/Schliebs/Desktop/ecpr_2018/data/wits_download_donors"
+pathh <- "C:/Users/MS/Desktop"
 
 eCaps <- list(
   chromeOptions = 

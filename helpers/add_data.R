@@ -26,6 +26,8 @@ unwide <-
 
 match <- 
   left_join(un %>% 
+           mutate(country = str_replace_all(country,"United States of America","United States")) %>% 
+              mutate(country = str_replace_all(country,"United Kingdom of Great Britain and Northern Ireland","United Kingdom")) %>% 
               mutate_at(vars(country),
                         funs(. %>% aidR::unifyCountrynames())) %>% 
               filter(country %in% c(aidR::donorCountries(),aidR::subsaharaCountries())),
@@ -37,7 +39,7 @@ match <-
   mutate_at(vars(date),
             funs(year = lubridate::year(as.Date(.))))
 
-
+match$country %>% table
 match2 <- 
   match %>% 
   mutate_at(vars(one_of(aidR::donorCountries())),
