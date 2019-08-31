@@ -1,8 +1,8 @@
 library(tidyverse)
 
 # CRS Codes
-crs <- readxl::read_excel("helpers/offline/sectors_csv_ms.xlsx")
-devtools::use_data(crs,overwrite = TRUE)
+# crs <- readxl::read_excel("helpers/offline/sectors_csv_ms.xlsx")
+# devtools::use_data(crs,overwrite = TRUE)
 
 ## UN Voting Patterns
 
@@ -28,7 +28,7 @@ match <-
   left_join(un %>% 
               mutate_at(vars(country),
                         funs(. %>% aidR::unifyCountrynames())) %>% 
-              filter(country %in% aidR::subsaharaCountries()),
+              filter(country %in% c(aidR::donorCountries(),aidR::subsaharaCountries())),
             unwide,
             by = c("rcid")) %>% 
   left_join(.,
@@ -58,10 +58,6 @@ match4 <-
 
 unmatch = match4
 
-devtools::use_data(unmatch)
-devtools::use_data(unvotes)
-
-
-## Security Council Membership
+usethis::use_data(unmatch,overwrite = T)
 
 
