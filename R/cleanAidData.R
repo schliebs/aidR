@@ -57,6 +57,8 @@ clean_aidData <- function(df_list,
     df$flow_classification [df$flow_name %in% c("OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "OOF"
     df$flow_classification [!df$flow_name %in% c("ODA Grants","ODA Loans","OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "other"
     
+    df$recipient_iso = df$recipient_iso
+    df$donor_iso = df$donor_iso
   }
   
   if("China" %in% name){
@@ -76,6 +78,8 @@ clean_aidData <- function(df_list,
     df$flow_classification [df$flow_class == "OOF-like"] <- "OOF"
     df$flow_classification [df$flow_class == "Vague (Official Finance)"] <- "other"
     
+    df$recipient_iso = df$recipient_iso2
+    df$donor_iso = "CN"
   }
   
 
@@ -113,9 +117,17 @@ clean_aidData <- function(df_list,
     
   if(level == "donor-year-recipient"){
     
+    # hier neu
+    
+    recipients <- data.frame(v1 = df$recipient, v2 = df$recipient_iso) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
+    donors <- data.frame(v1 = df$donor, v2 = df$donor_iso) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
+    
     df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
-                           recipient = df$recipient %>% unique(),
-                           donor = df$donor %>% unique())
+                           recipient = recipients$both,
+                           donor = donors$both) %>% 
+      separate(col = "recipient",into = c("recipient","recipient_iso"),sep = "__") %>% 
+      separate(col = "donor",into = c("donor","donor_iso"),sep = "__")
+    
     df2 <- 
       df %>% 
       group_by(donor,year,recipient) %>% 
