@@ -57,8 +57,8 @@ clean_aidData <- function(df_list,
     df$flow_classification [df$flow_name %in% c("OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "OOF"
     df$flow_classification [!df$flow_name %in% c("ODA Grants","ODA Loans","OOF LOANS(NON-EXPORT CREDIT)","Other Official Flows (non Export Credit)")] <- "other"
     
-    df$recipient_iso = df$recipient_iso
-    df$donor_iso = df$donor_iso
+    df$recipient_iso3 = df$recipient_iso3
+    df$donor_iso3 = df$donor_iso3
   }
   
   if("China" %in% name){
@@ -78,8 +78,8 @@ clean_aidData <- function(df_list,
     df$flow_classification [df$flow_class == "OOF-like"] <- "OOF"
     df$flow_classification [df$flow_class == "Vague (Official Finance)"] <- "other"
     
-    df$recipient_iso = df$recipient_iso2
-    df$donor_iso = "CN"
+    df$recipient_iso3 = df$recipient_iso3
+    df$donor_iso3 = df$donor_iso3
   }
   
 
@@ -119,8 +119,8 @@ clean_aidData <- function(df_list,
     
     # hier neu
     
-    recipients <- data.frame(v1 = df$recipient, v2 = df$recipient_iso) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
-    donors <- data.frame(v1 = df$donor, v2 = df$donor_iso) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
+    recipients <- data.frame(v1 = df$recipient, v2 = df$recipient_iso3) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
+    donors <- data.frame(v1 = df$donor, v2 = df$donor_iso3) %>% dplyr::distinct() %>% mutate(both = paste(v1,v2,sep = "__"))
     
     df_grid <- expand.grid(year = seq(min(df$year),max(df$year),by = 1),
                            recipient = recipients$both,
